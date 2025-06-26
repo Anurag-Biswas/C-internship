@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+void runLengthEncode(char *input) {
+    int len = strlen(input);
+    int count;
+
+    printf("Encoded output: ");
+    for (int i = 0; i < len; i++) {
+        // Count occurrences of the current character
+        count = 1;
+        while (i < len - 1 && input[i] == input[i + 1]) {
+            count++;
+            i++;
+        }
+
+        // Print character followed by count
+        printf("%c%d", input[i], count);
+    }
+    printf("\n");
+}
+
+int main() {
+    char str[1000];
+
+    printf("Enter a string to compress (RLE): ");
+    scanf("%s", str);
+
+    runLengthEncode(str);
+
+    return 0;
+}
